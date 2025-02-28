@@ -1,8 +1,7 @@
-import { Card, Button, Space, Typography } from 'antd';
+import { Space, Typography } from 'antd';
 import { PlayCircleOutlined, StarOutlined } from '@ant-design/icons';
-import Image from 'next/image';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 // 개별 음성 정보를 카드 형태로 보여주는 컴포넌트
 interface VoiceCardProps {

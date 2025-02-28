@@ -1,6 +1,6 @@
 // 다양한 음성을 선택할 수 있는 컴포넌트
 import { useState, useEffect, useMemo } from 'react';
-import { Button, Input, Select, Slider, Space, Divider, Switch, Tabs } from 'antd';
+import { Button, Input, Select, Space, Tabs } from 'antd';
 import { 
   SearchOutlined, 
   ReloadOutlined,

@@ -6,8 +6,6 @@ import { Layout, ConfigProvider, theme } from 'antd';
 import { darkThemeConfig } from '../styles/theme';
 import Header from './Header';
 import Footer from './Footer';
-import SuccessNotification from '../ui/SuccessNotification';
-import AudioPlayer from '../ui/AudioPlayer';
 
 const { Content } = Layout;
 
