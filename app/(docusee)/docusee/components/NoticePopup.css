@@ -1,0 +1,119 @@
+/* src/NoticePopup.css */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .popup-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideDown 0.3s ease-in-out;
+  }
+  
+  .popup-title {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #333333;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+  }
+  
+  .popup-content {
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+  }
+  
+  .popup-content p {
+    margin-bottom: 15px;
+  }
+  
+  .popup-footer {
+    font-weight: bold;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .popup-icon {
+    margin-right: 10px;
+    color: #3498db;
+    font-size: 1.2em;
+  }
+  
+  .btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .close-btn {
+    background-color: #ff7676;
+    color: #ffffff;
+  }
+  
+  .hide-btn {
+    background-color: #424242a3;
+    color: #ffffff;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  /* 애니메이션 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 480px) {
+    .popup-container {
+      padding: 30px 20px;
+    }
+  
+    .popup-title {
+      font-size: 22px;
+    }
+  
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .popup-icon {
+        margin-right: 8px;
+        font-size: 1em;
+      }
+  }
+  

@@ -1,0 +1,54 @@
+/* src/components/TextEditor.css */
+
+.toastui-editor-defaultUI{
+  height: 100%; /* 화면 크기에 맞추는 예시 */
+  /* max-height: 90vh; 부모 컨테이너의 최대 높이를 제한 */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center;  */
+  overflow: hidden;
+}
+
+.text-editor-container {
+  width: 100%; /* 원하는 고정 너비 */
+  height: 100%; /* 원하는 고정 높이 */
+  padding: 20px;
+  /* background-color: var(--container-bg); */
+  background-color: #ffffff86;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden; /* 필요 시 스크롤 활성화 */
+}
+
+.toastui-editor-popup-body * {
+  color: #000000 !important;
+}
+
+.toastui-editor-toolbar-tooltip {
+  top: auto !important;
+  left: auto !important;
+  transform: translate(10px, -100%);
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+.toastui-editor-md-table {
+  background-color: rgba(240, 240, 240, 0);
+  color: #ffffff;
+}
+
+.toastui-editor-main-container{
+   height: 100%;
+}
+
+.toastui-editor-ww-container{
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+  .text-editor-container {
+    /* height: 800px; */ /* 제거 */
+    padding: 10px; /* 패딩 조정 */
+  }
+}
+

@@ -1,0 +1,19 @@
+/* Control Panel 관련 변수와 스타일 */
+.controlPanelHeight {
+  --control-panel-height: 120px;
+}
+
+.controlPanel {
+  position: fixed;
+  bottom: 4rem;
+  right: 1rem;
+  width: calc(50% - 2rem);
+  height: var(--control-panel-height);
+}
+
+/* 필요한 경우 반응형 스타일 추가 */
+@media (max-width: 768px) {
+  .controlPanel {
+    width: calc(100% - 2rem);
+  }
+}

@@ -1,0 +1,25 @@
+/* AddFileItem.css */
+
+/* 파일 추가 아이콘 스타일 */
+.add-thumbnail {
+    display: flex;
+    flex-direction: row; /* 가로 정렬 */
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    color: #555;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    height: 60px; /* 썸네일과 동일한 높이 설정 */
+  }
+  
+  .add-thumbnail i {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  .add-file-text {
+    font-size: 14px;
+  }
+  

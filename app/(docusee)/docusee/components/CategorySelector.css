@@ -1,0 +1,98 @@
+/* CategorySelector.css */
+
+/* 추출 버튼 스타일 */
+.ai-recommandation {
+  display: flex; /* 내부 콘텐츠를 중앙 정렬하기 위해 flex 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  width: 40px; /* 높이와 동일하게 설정 */
+  height: 40px;
+  margin: 5px 5px 0px 0px;
+  padding: 0; /* 패딩 제거 */
+  font-size: 0.9rem;
+  font-weight: lighter;
+  background: linear-gradient(45deg, #aa00ffcd, #9900ff63);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%; /* 원형으로 만들기 */
+  cursor: pointer;
+}
+
+.ai-recommandation:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.05);
+}
+
+.category-selector {
+    max-width: 500px;
+    margin: 15px 100px 1px 10px; /* 위, 아래 마진은 10px, 오른쪽 마진은 auto */
+    padding: 15px; /* 패딩을 더 줄임 */
+    background-color: #ffffff7a;
+    border: 1px solid #00177d78;
+    border-radius: 6px; /* 라운드 정도를 더 줄임 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자를 더 얇게 */
+  }
+  
+  .select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 간격을 더 줄임 */
+  }
+  
+  .select-group.compact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px; /* 가로 방향 간격 조정 */
+  }
+  
+  .select-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .select-group.compact .select-item {
+    flex: 1; /* 동일한 너비 부여 */
+    min-width: 150px; /* 최소 너비 설정 */
+  }
+  
+  .select-label {
+    margin-bottom: 4px; /* 마진을 더 줄임 */
+    font-size: 1rem; /* 폰트 크기 감소 */
+    font-weight: 600; /* 폰트 두께 조정 */
+    color: #333333;
+    line-height: 1;
+  }
+  
+  .select-box {
+    padding: 1px 10px; /* 패딩 감소 */
+    font-size: 0.85rem; /* 폰트 크기 감소 */
+    border: 1px solid #cccccc;
+    border-radius: 4px; /* 라운드 정도 유지 */
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    height: 28px; /* 높이 고정 */
+  }
+  
+  .select-box:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.2); /* 그림자 감소 */
+    outline: none;
+  }
+  
+  .select-box:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 767px) {
+    .select-group.compact {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .select-item {
+      width: 100%;
+    }
+  }
+  

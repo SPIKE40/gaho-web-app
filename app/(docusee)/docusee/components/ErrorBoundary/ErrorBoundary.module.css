@@ -1,0 +1,8 @@
+/* 기본 에러 메시지 스타일 */
+.error-boundary-message {
+    color: #ff4136;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+  

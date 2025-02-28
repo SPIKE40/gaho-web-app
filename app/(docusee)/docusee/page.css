@@ -1,0 +1,489 @@
+/* App.css */
+
+/* Apply box-sizing globally */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
+/* CSS Variables */
+:root {
+  --bg-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  --text-color: #ffffff;
+  --container-bg: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.2);
+}
+
+/* 기본 바디 스타일 */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+}
+
+.top-panel {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 6px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+
+.button-panel {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* 패널들을 좌우로 배치 */
+  align-items: stretch; /* 패널들이 동일한 높이를 가지도록 설정 */
+  width: 100%;
+  height: calc(90vh - 110px); /* 상단 패널과 버튼 패널을 제외한 전체 화면 */
+  gap: 10px;
+  padding: 0 35px 0px;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.left-panel,
+.center-panel,
+.right-panel {
+  background-color: var(--container-bg);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 고정 너비 설정 */
+.left-panel {
+  width: 400px; /* 원하는 너비로 설정 */
+  flex-shrink: 0; /* 패널이 줄어들지 않도록 설정 */
+}
+
+.center-panel {
+  flex: 1; /* 남은 공간을 모두 차지 */
+  min-width: 500px; /* 최소 너비 설정 */
+}
+
+.right-panel {
+  width: 900px; /* 원하는 너비로 설정 */
+  flex-shrink: 0; /* 패널이 줄어들지 않도록 설정 */
+}
+
+/* Light Mode 스타일 */
+body.light-mode {
+  --bg-gradient: linear-gradient(135deg, #cde4ff, #001529);
+  --text-color: #333333;
+  --container-bg: rgba(0, 0, 0, 0.1);
+  --hover-bg: rgba(0, 0, 0, 0.2);
+}
+
+/* 공통 Transition 클래스 */
+#mode-toggle,
+#run-analysis {
+  transition: all 0.3s ease;
+}
+
+/* 모드 토글 버튼 스타일 */
+#mode-toggle {
+  /* position: fixed; */
+  top: 13px; /* Changed from 'center' to a specific value */
+  right: 20px;
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#mode-toggle:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the elements horizontally within the container */
+  gap: 20px; /* Optional: Adjust the space between elements */
+  margin: 40px auto 0 auto; /* Maintain top margin as in #run-analysis */
+}
+
+/* 추출 버튼 스타일 */
+#run-analysis {
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  background: linear-gradient(45deg, #1e90ff, #00bfff);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#run-analysis:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.05);
+}
+
+.gpu-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--text-color); /* Ensure it inherits the correct text color */
+}
+
+.gpu-checkbox {
+  margin-right: 10px; /* Space between checkbox and label text */
+  width: 20px; /* Optional: Adjust size */
+  height: 20px; /* Optional: Adjust size */
+}
+
+/* Execution Time Text */
+#execution-time {
+  display: inline-block;
+  width: 200px; /* 필요한 너비로 조정하세요 */
+  text-align: left;
+  font-family: monospace; /* 글자 간격을 고정하여 더 안정적인 표시 */
+}
+
+/* Optional: Different styling for light and dark modes */
+body.light-mode #execution-time {
+  color: #333333;
+}
+
+body.dark #execution-time {
+  color: #ffffff;
+}
+
+/* 문서 아이콘 배경 스타일 */
+.document-icon {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--text-color);
+  opacity: 0; /* 초기 투명도 설정 */
+  animation: moveAndFade ease-in-out forwards;
+}
+
+@keyframes moveAndFade {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  10% {
+    opacity: 0.3; /* 페이드인 */
+    transform: translate(10px, 10px) scale(1);
+  }
+  90% {
+    opacity: 0.3; /* 유지 */
+    transform: translate(40px, 40px) scale(1);
+  }
+  100% {
+    opacity: 0; /* 페이드아웃 */
+    transform: translate(70px, 70px) scale(0.5);
+  }
+}
+
+.json-view {
+  color: #4d4d4d;
+  background-color: #ffffff;
+  --json-property: #009033;
+  --json-index: #676dff;
+  --json-number: #676dff;
+  --json-string: #b2762e;
+  --json-boolean: #dc155e;
+  --json-null: #dc155e;
+}
+
+/* 아이콘 움직임 애니메이션 */
+@keyframes moveIcon {
+  0% {
+    transform: translate(-100%, -100%) rotate(0deg);
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(360deg);
+  }
+}
+
+/* 플로팅 아이콘 애니메이션 */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* App Container */
+.App {
+  width: 100%;
+  max-width: 100vw; /* Ensure it doesn't exceed viewport width */
+}
+
+/* Split Container for Left and Right Panels */
+/* Removed as it's not used anymore */
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* 기본 텍스트 색상과 폰트 스타일 */
+.text-gray-600 {
+  color: #212121; /* 회색 */
+  font-size: 25px; /* 폰트 크기 */
+}
+
+.text-blue-70 {
+  color: #3b82f6; /* 파란색 */
+}
+
+/* 다크 모드 스타일 */
+.dark .dark\:text-white {
+  color: #ffffff; /* 다크 모드에서 흰색 */
+}
+
+.dark .dark\:text-blue-40 {
+  color: #60a5fa; /* 다크 모드에서 약간 밝은 파란색 */
+}
+
+/* 폰트 두께 */
+.font-medium {
+  font-weight: 500;
+}
+
+/* 예: 탭 내용 영역의 스크롤 */
+.tab-content {
+  height: calc(100% - 50px); /* 탭 버튼 높이에 맞춰 조정 */
+  overflow-y: auto;
+}
+
+/* Document Viewer Section */
+.document-viewer-section {
+  width: 100%;
+  height: 80vh; /* 높이를 뷰포트의 80%로 설정 */
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--container-bg);
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 활성화 */
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  /* Adjust padding to reduce total width */
+  .main-content {
+    padding: 0 15px;
+  }
+
+  /* Adjust ResizableBox max constraints for smaller screens */
+  .left-resizable .react-resizable {
+    max-width: 300px;
+  }
+
+  .center-resizable .react-resizable {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .drop-zone {
+    height: 180px;
+  }
+
+  #text-editor-container {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-color: var(--container-bg);
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  .document-viewer-section {
+    height: 70vh;
+  }
+
+  /* Stack panels vertically on very small screens */
+  .main-content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-resizable,
+  .center-resizable,
+  .right-panel {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .right-panel {
+    min-width: unset;
+  }
+}
+
+/* Google Fonts에서 세련된 폰트 불러오기 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500&display=swap");
+
+.corp_area {
+  /* 화면 하단에 고정 */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  /* Flexbox를 사용하여 중앙 정렬 */
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 (필요 시 추가) */
+
+  /* 여백과 패딩 설정 */
+  padding: 10px 0;
+  margin: 0; /* 고정 위치이므로 상단 여백 제거 */
+
+  /* 배경색과 텍스트 색상 */
+  background-color: #f9f9f9; /* 연한 회색 배경 */
+  color: #555555; /* 진한 회색 텍스트 */
+
+  /* 폰트 설정 */
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+
+  /* 그림자 효과 (선택 사항) */
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+
+  /* 높이 설정 (필요 시 조정) */
+  height: 50px;
+
+  /* z-index 설정하여 다른 요소 위에 표시 (필요 시) */
+  z-index: 1000;
+}
+
+.corp_area a {
+  color: #007bff; /* 링크 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.corp_area a:hover {
+  color: #0056b3; /* 호버 시 색상 변경 */
+}
+
+.top-menu {
+  /* 화면 상단에 고정 */
+  /* position: fixed; */
+  top: 0;
+  right: 0; /* 왼쪽 대신 오른쪽에 고정 */
+
+  /* Flexbox를 사용하여 오른쪽 정렬 */
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+
+  /* 여백과 패딩 설정 */
+  padding: 20px 100px;
+  margin: 5px;
+
+  /* 배경색을 투명하게 설정 */
+  background-color: transparent; /* 투명한 배경 */
+  color: #ffffff;
+
+  /* 폰트 설정 */
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+
+  /* 높이 설정 */
+  height: 60px;
+
+  /* 그림자 제거 또는 필요에 따라 유지 */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+
+  /* z-index 설정하여 다른 요소 위에 표시 */
+  z-index: 1000;
+}
+
+/* 메뉴 항목 스타일 */
+.top-menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.top-menu a:hover {
+  color: #007bff; /* 호버 시 파란색으로 변경 */
+}
+
+/* Light mode에서 .top-menu 텍스트 색상 흰색으로 변경 */
+body.light-mode .top-menu {
+  color: #333;
+}
+
+/* Light mode에서 .top-menu 내부 링크 색상도 흰색으로 변경 */
+body.light-mode .top-menu a {
+  color: #333;
+}
+
+body.light-mode .top-menu a:hover {
+  color: #66b2ff; /* 호버 시 약간 밝은 파란색으로 변경 (필요 시 조정) */
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
